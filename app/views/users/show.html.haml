@@ -1,0 +1,23 @@
+%h1
+	= @user.username
+	's Info
+
+%h3
+	Full Name
+= @user.full_name
+
+%h3
+	Location
+= @user.location || "NOT GIVEN"
+
+%h3
+	Email
+= @user.email
+
+%h3
+	Bio
+= @user.bio || "NOT GIVEN"
+
+%h3
+	Date of Birth
+= @user.date_of_birth || "NOT GIVEN"

@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
-
+		@user = User.find(params[:id])
+		render :show
 	end
 
 	def new
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
 		if @user.save
 			redirect_to users_url
 		else
+			flash[:notices] = @user.errors.full_messages
 			redirect_to new_user_url
 		end
 	end

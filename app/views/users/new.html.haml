@@ -4,23 +4,37 @@
 	%input{:type=> "hidden", :name => "authenticity_token", :value => form_authenticity_token}
 
 	%label
-		Username (2-15 characters)
+		Username* (2-15 characters)
 		%br
 		%input{:type => "text", :name => "user[username]"}
 
 	%br
 
 	%label
-		Full Name
+		Email*
+		%br
+		%input{:type => "email", :name => "user[email]"}
+
+	%br
+
+	%label
+		Password* (minimum 6 characters)
+		%br
+		%input{:type => "password", :name => "user[password]"}
+
+	%br
+
+	%label
+		Full Name*
 		%br
 		%input{:type => "text", :name => "user[full_name]"}
 
 	%br
 
 	%label
-		Email
+		Location
 		%br
-		%input{:type => "email", :name => "user[email]"}
+		%input{:type => "text", :name => "user[location]"}
 
 	%br
 
@@ -31,4 +45,11 @@
 
 	%br
 
-	%input{:type => "submit"}
+	%label
+		Date of Birth
+		%br
+		%input{:type => "date", :name => "user[date_of_birth]"}
+
+	%br
+	%br
+	%input{:type => "submit", :value => "Sign Up"}

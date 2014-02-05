@@ -8,6 +8,27 @@
 </head>
 <body>
 
+	<div>
+		<%= link_to "Users", users_url %>
+		<%= link_to "New User", new_user_url %>
+
+		<%# if logged_in? %>
+			<%#= link_to "Log out", session_url, :method => "DELETE" %>
+		<%# else %>
+			<%#= link_to "Log in", new_session_url %>
+		<%# end %>
+	</div>
+
+	<% unless flash[:notices].nil? %>
+		<div style="border: 1px solid black; background-color: khaki;">
+			<ul>
+			<% flash[:notices].each do |notice| %>
+				<li><%= notice %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
 <%= yield %>
 
 </body>
