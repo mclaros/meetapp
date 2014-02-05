@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
   validates_length_of :bio, maximum: 500
   validates_length_of :password, minimum: 6, allow_nil: true
 
+  def self.find_by_credentials(username, password)
+  	user = User.find_by_username(username)
+  	user.is_password?(password) ? user : nil
+  end
+
   def password=(password)
   	@password = password
   	self.password_digest = BCrypt::Password.create(password)

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(params[:user])
 		if @user.save
-			redirect_to users_url
+			redirect_to user_url(@user)
 		else
 			flash[:notices] = @user.errors.full_messages
 			redirect_to new_user_url
