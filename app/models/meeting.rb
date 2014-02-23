@@ -5,6 +5,9 @@ class Meeting < ActiveRecord::Base
 						:class_name => "User",
 						:primary_key => :id,
 						:foreign_key => :organizer_id 
-	has_many :meeting_guests
+	has_many :meeting_guests,
+					:class_name => "MeetingGuest",
+					:primary_key => :id,
+					:foreign_key => :meeting_id
 	has_many :guests, :through => :meeting_guests, :source => :user
 end
