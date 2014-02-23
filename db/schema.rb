@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140205033856) do
+ActiveRecord::Schema.define(:version => 20140223000139) do
+
+  create_table "group_memberships", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "group_id",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "group_memberships", ["user_id", "group_id"], :name => "index_group_memberships_on_user_id_and_group_id", :unique => true
 
   create_table "groups", :force => true do |t|
     t.string   "name"

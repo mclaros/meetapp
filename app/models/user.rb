@@ -11,6 +11,17 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :groups,
+          :class_name => "Group",
+          :primary_key => :id,
+          :foreign_key => :founder_id
+  has_many :group_memberships,
+          :class_name => "GroupMembership",
+          :primary_key => :id,
+          :foreign_key => :user_id
+
+  has_many :memberships, :through => :group_memberships, :source => :group
+
   def self.find_by_credentials(username, password)
   	user = User.find_by_username(username)
     return nil if user.nil?
