@@ -14,13 +14,30 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(params[:user])
+		#NOTE: Do not want to allow changing of username afterwards
+		@user = User.new(params[:user].except(:username))
+		@user.username = params[:user][:username]
 		if @user.save
 			self.current_user = @user
 			redirect_to user_url(@user)
 		else
-			flash[:notices] = @user.errors.full_messages
-			redirect_to new_user_url
+			flash.now[:notices] = @user.errors.full_messages
+			render :new
+		end
+	end
+
+	def edit
+		@user = User.find(params[:id])
+		render :edit
+	end
+
+	def update
+		@user = User.find(params[:id])
+		if @user.update_attributes(params[:user])
+			redirect_to user_url(@user)
+		else
+			flash.now[:notices] = @user.errors.full_messages
+			render :edit
 		end
 	end
 end

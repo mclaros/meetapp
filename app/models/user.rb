@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :bio, :date_of_birth, :email, :full_name, :location, :username, :password
+  attr_accessible :bio, :date_of_birth, :email, :full_name, :location, :password
   attr_reader :password
 
   validates_presence_of :username, :full_name, :email, :session_token

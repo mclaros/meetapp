@@ -1,0 +1,7 @@
+%h1
+	= "Editing #{@user.username}"
+	%small
+		= @user.full_name
+
+= "Username: #{@user.username}"
+= render "users/user_form", {:action => user_url(@user), :put => true, :user => @user}
