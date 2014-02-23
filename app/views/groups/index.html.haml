@@ -1,0 +1,10 @@
+%h1 Groups
+
+%ul
+	- @groups.each do |group|
+		%li
+			%a{:href => group_url(group)}
+				= group.name
+
+%a{:href => new_group_url}
+	Create a group

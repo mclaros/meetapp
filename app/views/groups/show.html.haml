@@ -1,0 +1,9 @@
+%h1= @group.name
+founded by:
+%a{:href => user_url(@group.founder_id)}
+	= @group.founder.full_name
+on
+= @group.created_at
+
+%h2 Description
+= @group.description

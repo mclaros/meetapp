@@ -10,14 +10,17 @@
 
 	<div>
 		<%= link_to "Users", users_url %>
-		<%= link_to "New User", new_user_url %>
-
+		<%= link_to "Groups", groups_url %>
+		|
 		<% if logged_in? %>
 			Logged in as 
 			<%= link_to "#{current_user.username}", user_url(current_user) %>
 			<%= link_to "Log out", session_url, :method => :delete %>
 		<% else %>
+			Welcome, guest.
 			<%= link_to "Log in", new_session_url %>
+			or
+			<%= link_to "Sign up", new_user_url %>
 		<% end %>
 	</div>
 
