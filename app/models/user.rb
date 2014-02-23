@@ -23,8 +23,10 @@ class User < ActiveRecord::Base
           :class_name => "GroupMembership",
           :primary_key => :id,
           :foreign_key => :user_id
+  has_many :meeting_guests
 
   has_many :memberships, :through => :group_memberships, :source => :group
+  has_many :rsvps, :through => :meeting_guests, :source => :meeting
 
   def self.find_by_credentials(username, password)
   	user = User.find_by_username(username)
