@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
           :class_name => "Group",
           :primary_key => :id,
           :foreign_key => :founder_id
+  has_many :meetings,
+          :class_name => "Meeting",
+          :primary_key => :id,
+          :foreign_key => :organizer_id
   has_many :group_memberships,
           :class_name => "GroupMembership",
           :primary_key => :id,
