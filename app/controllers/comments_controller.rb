@@ -8,10 +8,19 @@ class CommentsController < ApplicationController
 		#Currently only nested under Meetings and Groups
 		@commentable = find_commentable
 		@comment = @commentable.comments.build(params[:comment])
-		if @comment.save
-			
-		else
+		@comment.author_id = current_user.id
 
+		if @comment.save
+			redirect_to self.send(
+				@commentable.class.to_s.downcase + "_url",
+				@commentable
+				)
+		else
+			flash[:notices] = @comment.errors.full_messages
+			redirect_to self.send(
+				@commentable.class.to_s.downcase + "_url",
+				@commentable
+				)
 		end
 	end
 
