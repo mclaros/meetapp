@@ -9,6 +9,7 @@ class Meeting < ActiveRecord::Base
 						:class_name => "User",
 						:primary_key => :id,
 						:foreign_key => :organizer_id 
+	has_many :comments, :as => :commentable
 	has_many :meeting_guests,
 					:class_name => "MeetingGuest",
 					:primary_key => :id,

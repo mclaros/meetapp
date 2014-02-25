@@ -9,6 +9,7 @@ class Group < ActiveRecord::Base
   					:class_name => "User",
   					:primary_key => :id,
   					:foreign_key => :founder_id
+  has_many :comments, :as => :commentable
   has_many :group_memberhips,
  					:class_name => "GroupMembership",
  					:primary_key => :id,

@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :comments,
+          :foreign_key => :author_id
   has_many :groups,
           :class_name => "Group",
           :primary_key => :id,
