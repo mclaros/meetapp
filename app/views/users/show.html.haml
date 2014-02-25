@@ -24,3 +24,7 @@
 %h3
 	Date of Birth
 = @user.date_of_birth || "NOT GIVEN"
+
+
+%h2= "Comments by #{@user.username}"
+= render "comments/comments_list", {:comments => @user.comments, :include_source => true}

@@ -1,0 +1,13 @@
+- include_source ||= false
+%ul
+	- comments.each do |comment|
+		%li
+			%p
+				= comment.content
+			%p
+				posted by
+				%a{:href => user_url(comment.author_id)}
+					= "User #{comment.author_id}"
+				- if include_source
+					in response to 
+					= "#{comment.commentable_type} #{comment.commentable_id}"

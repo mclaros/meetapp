@@ -9,24 +9,11 @@ on
 = @group.description
 
 %h2 Comments
-%ul
-	- @group.comments.each do |comment|
-		%li
-			= comment.content
-			%br 
-			posted by
-			%a{:href => user_url(comment.author_id)}
-				= User.find(comment.author_id).username
+= render "comments/comments_list", :comments => @group.comments
 
 %h3 Add your own comment
 - if logged_in?
-	= form_for [@group, Comment.new] do |f|
-		%p
-			= f.label :content
-			%br
-			= f.text_area :content
-		%p
-			= f.submit "Add Comment"
+	= render "comments/comments_form", :commentable => @group
 - else
 	%a{:href => new_session_url}
 		Log in 
