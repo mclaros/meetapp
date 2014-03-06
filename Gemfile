@@ -29,6 +29,7 @@ end
 gem 'jquery-rails'
 gem 'figaro'
 gem 'haml'
+gem 'foundation-rails'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', :require => 'bcrypt'
