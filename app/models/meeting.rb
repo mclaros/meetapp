@@ -1,7 +1,7 @@
 class Meeting < ActiveRecord::Base
-  attr_accessible :description, :group_id, :location, :name, :user_id
+  attr_accessible :description, :group_id, :location, :name
 
-	validates_presence_of :user_id, :name, :description
+	validates_presence_of :organizer_id, :name, :description
 	validates_length_of :name, :maximum => 50
 	validates_length_of :description, :maximum => 500
 
@@ -15,4 +15,12 @@ class Meeting < ActiveRecord::Base
 					:primary_key => :id,
 					:foreign_key => :meeting_id
 	has_many :guests, :through => :meeting_guests, :source => :user
+
+	def self.organized_by(organizer_id)
+		self.where(:organizer_id => organizer_id)
+	end
+
+	def self.hosted_by(group_id)
+		self.where(:group_id => group_id)
+	end
 end

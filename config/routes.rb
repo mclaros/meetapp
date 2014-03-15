@@ -1,7 +1,7 @@
 Meetapp::Application.routes.draw do
   resource :session, :only => [:new, :create, :destroy]
   resources :meetings do
-  	resources :comments, :only => [:index, :create, :update]
+  	resources :comments, :only => [:index, :show, :create, :update]
   end
   resources :users do
   	resources :meetings, :only => [:index]
