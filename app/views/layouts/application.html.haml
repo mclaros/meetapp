@@ -1,0 +1,58 @@
+!!! 5
+%html
+	%head
+		%title Meetapp
+
+		= stylesheet_link_tag    "application", :media => "all"
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+
+	%body
+		%nav{:class => "top-bar", :data => {:topbar => true}}
+			%ul.title-area
+				%li.name
+					%h1
+						%a{:href => "/"}
+							Meetapp
+
+			%section.top-bar-section
+				%ul.right
+					%li.active
+						- if logged_in?
+							= link_to "#{current_user.username}", user_url(current_user)
+					%li.has-dropdown
+						%a{:href => "#"}
+							Right Button Dropdown
+						%ul.dropdown
+							%li
+								%a{:href => "#"}
+									Some link here
+
+				%ul.left
+					%li
+						%a{:href => "#"}
+							Left Nav Button
+
+		%div
+			= link_to "Users", users_url
+			= link_to "Groups", groups_url
+			|
+			- if logged_in?
+				Logged in as 
+				= link_to "#{current_user.username}", user_url(current_user)
+				= link_to "Log out", session_url, :method => :delete
+			- else
+				Welcome, guest.
+				= link_to "Log in", new_session_url
+				or
+				= link_to "Sign up", new_user_url
+
+		- unless flash[:notices].nil?
+			%div{:class => "alert-box [radius round]", :data => {alert: true}}
+				- flash[:notices].each do |notice|
+					= notice
+					%br
+				%a.close{:href => "#"}
+					&times;
+
+	= yield
