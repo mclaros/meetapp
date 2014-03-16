@@ -1,0 +1,32 @@
+.row
+	.small-12.column.panel.callout
+		%h1 Long Group Name Shown Here
+	.small-10.column
+		%dl.sub-nav
+			%dd
+				%a{:href => "#"}
+					Home
+			%dd.active
+				%a{:href => "#"}
+					Members
+			%dd
+				%a{:href => "#"}
+					Photos
+			%dd
+				%a{:href => "#"}
+					Discussions
+			%dd
+				%a{:href => "#", :data => {:dropdown => "group-nav-drop"}}
+					More
+				%ul#group-nav-drop.f-dropdown{:data => {"dropdown-content" => true}}
+					%li
+						%a{:href => "#"}
+							Option 1
+					%li
+						%a{:href => "#"}
+							Option 2
+	.small-2.column
+		/ if member
+		My Membership
+		/ else
+		/ Join Group

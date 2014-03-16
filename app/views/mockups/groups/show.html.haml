@@ -1,87 +1,8 @@
-.row
-	.small-12.column.panel.callout
-		%h1 Long Group Name Shown Here
-	.small-10.column
-		%dl.sub-nav
-			%dd.active
-				%a{:href => "#"}
-					Home
-			%dd
-				%a{:href => "#"}
-					Members
-			%dd
-				%a{:href => "#"}
-					Photos
-			%dd
-				%a{:href => "#"}
-					Discussions
-			%dd
-				%a{:href => "#", :data => {:dropdown => "group-nav-drop"}}
-					More
-				%ul#group-nav-drop.f-dropdown{:data => {"dropdown-content" => true}}
-					%li
-						%a{:href => "#"}
-							Option 1
-					%li
-						%a{:href => "#"}
-							Option 2
-	.small-2.column
-		/ if member
-		My Membership
-		/ else
-		/ Join Group
+= render '/mockups/groups/group_navbar', :page => :home
 
-%br
 / This row wraps around all three content columns
 .row
-	.small-12.medium-2.columns
-		%ul.pricing-table
-			%li.title
-				City, State [, Country]
-			%li.description
-				Founded Month, Day, 2014
-			%li.bullet-item
-				%dl
-					%dt
-						99
-					%dd
-						X Members
-			%li.bullet-item
-				%dl
-					%dt 
-						14
-					%dd
-						Group Reviews
-			%li.bullet-item
-				%dl
-					%dt
-						55
-					%dd
-						Upcoming meetings
-			%li.bullet-item
-				%dl
-					%dd
-						Group calendar
-			%li.bullet-item
-				%h5
-					Organizer:
-				%h6
-					Full Name
-				%img.th{:src => "http://i62.tinypic.com/2dtruo6.jpg"}
-				Contact
-			%li.bullet-item
-				We're about:
-				%br
-				%br
-				%ul.inline-list
-					%li
-						Tag1
-					%li
-						Tag2
-					%li
-						Tag3
-					%li
-						Tag4
+	= render '/mockups/groups/group_quick_stats'
 
 	/ This is main content column
 	.small-12.medium-7.columns
@@ -320,13 +241,19 @@
 
 		/one row per activity feed
 		/This should be delegated to a partial
-		.row
-			.small-8.columns
-				%small New RSVP/Comment/Member
-				%p
-					Full Name RSVPed for X/ commented on X/ joined
-					%br 
-					%small Y time ago
-			.small-4.columns
-				%img.th{:src => "http://i62.tinypic.com/2dtruo6.jpg"}
-			%hr
+		= render '/mockups/groups/activity_feed',
+			{:event => "RSVP",
+			:user => current_user,
+			:target => Group.first,
+			:time_ago => "9 days"}
+
+		/ .row
+		/ 	.small-8.columns
+		/ 		%small New RSVP/Comment/Member
+		/ 		%p
+		/ 			Full Name RSVPed for X/ commented on X/ joined
+		/ 			%br 
+		/ 			%small Y time ago
+		/ 	.small-4.columns
+		/ 		%img.th{:src => "http://i62.tinypic.com/2dtruo6.jpg"}
+		/ 	%hr
