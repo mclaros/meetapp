@@ -1,3 +1,5 @@
-== Meetapp
+# Meetapp
 
-[In progress] A Meetup.com clone.
+A Meetup.com clone. In Progress.
+
+Current progress: working out layouts. Check the `foundation` branch.
