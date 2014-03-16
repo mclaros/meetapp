@@ -12,6 +12,6 @@ class MockupsController < ApplicationController
 	end
 
 	def group_show
-
+		render "/mockups/groups/show"
 	end
 end

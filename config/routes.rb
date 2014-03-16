@@ -15,6 +15,7 @@ Meetapp::Application.routes.draw do
   resource :mockup, :only => [] do 
     get "root/index", to: "mockups#root_index"
     get "user/show", to: "mockups#user_show"
+    get "group/show", to: "mockups#group_show"
   end
 
   root to: "users#index"
