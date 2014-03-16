@@ -1,5 +1,6 @@
 # Meetapp
 
-A Meetup.com clone. In Progress.
+In Progress.
+A Meetup.com clone. Will emphasize integration with Twitter, Facebook, (maybe G+), and scalability (Redis, Sidekiq or Resque, and cron jobs).
 
 Current progress: working out layouts. Check the `foundation` branch.
