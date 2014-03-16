@@ -34,7 +34,7 @@
 %br
 / This row wraps around all three content columns
 .row
-	.small-12.medium-3.columns
+	.small-12.medium-2.columns
 		%ul.pricing-table
 			%li.title
 				City, State [, Country]
@@ -84,25 +84,249 @@
 						Tag4
 
 	/ This is main content column
-	.small-12.medium-6.columns
+	.small-12.medium-7.columns
 		%h2
 			Welcome to the GROUP TITLE group!
 			/group.welcome message
+
+		%div.alert-box.secondary
+			Suggest a new meeting
+
+		%dl.tabs{:data => {:tab => true}}
+			%dd.active
+				%a{:href => "#upcoming-meetings"}
+					Upcoming COUNT
+			%dd
+				%a{:href => "#past-meetings"}
+					Past
+			%dd
+				%a{:href => "#group-calendar"}
+					Calendar
+
+		.tabs-content
+			#upcoming-meetings.content.active
+
+				/ this should be delegated to partial
+				.row.meeting-listing-detailed
+					.small-12.columns
+						%h4
+							Name of meeting can be pretty long I think
+						%hr
+
+					.small-8.columns
+						%h6
+							Name of location
+						%h6.subheader 1234 Street St, City, State (Map)
+						.alert-box.secondary
+							FACES ROW GOES HERE (?)
+						%p
+							Truncated summary description of the event with link to Learn More.
+						%h6.subheader Hosted by: Full Name [Organizer]
+
+						/ if meeting.repeat_interval > 0
+						.alert-box.info
+							%h6.subheader
+								This meeting repeats every meeting.repeat_interval days/months/years
+
+							/ following should be delegated to partial
+							%ul.inline-list
+								%li
+									%small
+										Long title of meeting by this group is long
+								%li
+									%small
+										9 attending
+								%li
+									%small
+										2:00 PM on Day, Month 14
+							%ul.inline-list
+								%li
+									%small
+										Long title of meeting by this group is long
+								%li
+									%small
+										9 attending
+								%li
+									%small
+										2:00 PM on Day, Month 14
+							%ul.inline-list
+								%li
+									%small
+										Long title of meeting by this group is long
+								%li
+									%small
+										9 attending
+								%li
+									%small
+										2:00 PM on Day, Month 14
+
+					/ right column with stats
+					.small-4.columns
+						%h6
+							Day Mon 16
+						%h6.subheader
+							2:00 PM
+						%a.button.tiny{:href => "#"}
+							RSVP ->
+						%br
+						%a{:href => "#"}
+							X attending
+						%br
+							%a{:href => "#"}
+								Y comments
+						%small
+							Suggested donation: $99.00 per person
+
+			#past-meetings.content
+
+				/ this should be delegated to partial
+				.row.meeting-listing-detailed
+					.small-12.columns
+						%h4
+							Name of meeting can be pretty long I think
+						%hr
+
+					.small-8.columns
+						%h6
+							Name of location
+						%h6.subheader 1234 Street St, City, State (Map)
+						.alert-box.secondary
+							FACES ROW GOES HERE (?)
+						%p
+							Truncated summary description of the event with link to Learn More.
+						%h6.subheader Hosted by: Full Name [Organizer]
+
+					/ right column with stats
+					.small-4.columns
+						%h6
+							Day Mon 16
+						%h6.subheader
+							2:00 PM
+						%a.button.tiny{:href => "#"}
+							RSVP ->
+						%br
+						%a{:href => "#"}
+							X attending
+						%br
+							%a{:href => "#"}
+								Y comments
+						%small
+							Suggested donation: $99.00 per person
+				.row.meeting-listing-detailed
+					.small-12.columns
+						%h4
+							Name of meeting can be pretty long I think
+						%hr
+
+					.small-8.columns
+						%h6
+							Name of location
+						%h6.subheader 1234 Street St, City, State (Map)
+						.alert-box.secondary
+							FACES ROW GOES HERE (?)
+						%p
+							Truncated summary description of the event with link to Learn More.
+						%h6.subheader Hosted by: Full Name [Organizer]
+
+					/ right column with stats
+					.small-4.columns
+						%h6
+							Day Mon 16
+						%h6.subheader
+							2:00 PM
+						%a.button.tiny{:href => "#"}
+							RSVP ->
+						%br
+						%a{:href => "#"}
+							X attending
+						%br
+							%a{:href => "#"}
+								Y comments
+						%small
+							Suggested donation: $99.00 per person
+				.row.meeting-listing-detailed
+					.small-12.columns
+						%h4
+							Name of meeting can be pretty long I think
+						%hr
+
+					.small-8.columns
+						%h6
+							Name of location
+						%h6.subheader 1234 Street St, City, State (Map)
+						.alert-box.secondary
+							FACES ROW GOES HERE (?)
+						%p
+							Truncated summary description of the event with link to Learn More.
+						%h6.subheader Hosted by: Full Name [Organizer]
+
+					/ right column with stats
+					.small-4.columns
+						%h6
+							Day Mon 16
+						%h6.subheader
+							2:00 PM
+						%a.button.tiny{:href => "#"}
+							RSVP ->
+						%br
+						%a{:href => "#"}
+							X attending
+						%br
+							%a{:href => "#"}
+								Y comments
+						%small
+							Suggested donation: $99.00 per person
+				.row.meeting-listing-detailed
+					.small-12.columns
+						%h4
+							Name of meeting can be pretty long I think
+						%hr
+
+					.small-8.columns
+						%h6
+							Name of location
+						%h6.subheader 1234 Street St, City, State (Map)
+						.alert-box.secondary
+							FACES ROW GOES HERE (?)
+						%p
+							Truncated summary description of the event with link to Learn More.
+						%h6.subheader Hosted by: Full Name [Organizer]
+
+					/ right column with stats
+					.small-4.columns
+						%h6
+							Day Mon 16
+						%h6.subheader
+							2:00 PM
+						%a.button.tiny{:href => "#"}
+							RSVP ->
+						%br
+						%a{:href => "#"}
+							X attending
+						%br
+							%a{:href => "#"}
+								Y comments
+						%small
+							Suggested donation: $99.00 per person
+
+
+			#group-calendar.content
+
 
 	/ Rightmost column is for extra info, like activity feed
 	/ Not shown for small devices
 	.medium-3.show-for-medium-up.columns
 		%h3 What's new
+
 		/one row per activity feed
+		/This should be delegated to a partial
 		.row
-			.small-12.column
+			.small-8.columns
 				%small New RSVP/Comment/Member
-				%h4
-					%small
-						Full Name RSVPed for X/
-						commented on X/
-						joined
-				%h5
-					%small
-						Y time ago
-		%hr
+				%p
+					Full Name RSVPed for X/ commented on X/ joined
+					%br 
+					%small Y time ago
+			.small-4.columns
+				%img.th{:src => "http://i62.tinypic.com/2dtruo6.jpg"}
+			%hr
