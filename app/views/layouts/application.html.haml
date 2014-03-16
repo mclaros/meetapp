@@ -8,37 +8,46 @@
 		= csrf_meta_tags
 
 	%body
-		%nav{:class => "top-bar", :data => {:topbar => true}}
-			%ul.title-area
-				%li.name
-					%h1
-						%a{:href => "/"}
-							Meetapp
+		.contain-to-grid
+			%nav{:class => "top-bar", :data => {:topbar => true}}
+				%ul.title-area
+					%li.name
+						%h1
+							%a{:href => "/"}
+								Meetapp
 
-			%section.top-bar-section
-				%ul.right
-					- if logged_in?
-						%li.active.has-dropdown
+				%section.top-bar-section
+					%ul.right
+						- if logged_in?
+							%li.active.has-dropdown
+								%a{:href => "#"}
+									= link_to "#{current_user.username}", user_url(current_user)
+								%ul.dropdown
+									%li
+										= link_to "Sign out", session_url, :method => :delete
+						- else
+							%li
+								%a{:href => "#"}
+									Welcome, Guest
+							%li.divider
+							%li
+								= link_to "Sign in", new_session_url
+							%li
+								= link_to "Sign up", new_user_url
+
+					%ul.left
+						%li
+							= link_to "Users", users_url
+						%li
+							= link_to "Groups", groups_url
+						%li.has-dropdown
 							%a{:href => "#"}
-								= link_to "#{current_user.username}", user_url(current_user)
+								Mockups
 							%ul.dropdown
 								%li
-									= link_to "Sign out", session_url, :method => :delete
-					- else
-						%li
-							%a{:href => "#"}
-								Welcome, Guest
-						%li.divider
-						%li
-							= link_to "Sign in", new_session_url
-						%li
-							= link_to "Sign up", new_user_url
-
-				%ul.left
-					%li
-						= link_to "Users", users_url
-					%li
-						= link_to "Groups", groups_url
+									= link_to "Root index", root_index_mockup_url
+								%li
+									= link_to "User show", user_show_mockup_url
 
 		- unless flash[:notices].nil?
 			.row

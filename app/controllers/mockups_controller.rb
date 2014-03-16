@@ -4,7 +4,7 @@ class MockupsController < ApplicationController
 	end
 
 	def user_show
-
+		render '/mockups/users/show'
 	end
 
 	def meeting_show
