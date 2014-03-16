@@ -1,0 +1,19 @@
+.row.panel{:data => {:equalizer => true}}
+	%div{:class => "small-8 columns panel callout", :data => {:equalizer => true}}
+		%h1
+			= "Hello, #{logged_in? ? current_user.username : 'guest'}."
+		%h3
+			There are some meetups available. Here are some stats.
+
+	%div{:class => "small-4 columns", :data => {:equalizer => true}}
+		%ul
+			%li
+				Some stuff here
+			%li
+				Other stuff here
+			%li
+				And so on...
+
+
+
+testing root index

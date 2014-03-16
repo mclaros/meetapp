@@ -11,5 +11,10 @@ Meetapp::Application.routes.draw do
   	resources :meetings, :only => [:index]
   	resources :comments, :only => [:index, :create, :update]
   end
+
+  resource :mockup, :only => [] do 
+    get "root/index", to: "mockups#root_index"
+  end
+
   root to: "users#index"
 end
