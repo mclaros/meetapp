@@ -1,0 +1,69 @@
+.row.meeting-listing-detailed
+	.small-12.columns
+		%h4
+			Name of meeting can be pretty long I think
+		%hr
+
+	.small-8.columns
+		%h6
+			Name of location
+		%h6.subheader 1234 Street St, City, State (Map)
+		.alert-box.secondary
+			FACES ROW GOES HERE (?)
+		%p
+			Truncated summary description of the event with link to Learn More.
+		%h6.subheader Hosted by: Full Name [Organizer]
+
+		/ if meeting.repeat_interval > 0
+		.alert-box.info
+			%h6.subheader
+				This meeting repeats every meeting.repeat_interval days/months/years
+
+			/ following should be delegated to partial
+			%ul.inline-list
+				%li
+					%small
+						Long title of meeting by this group is long
+				%li
+					%small
+						9 attending
+				%li
+					%small
+						2:00 PM on Day, Month 14
+			%ul.inline-list
+				%li
+					%small
+						Long title of meeting by this group is long
+				%li
+					%small
+						9 attending
+				%li
+					%small
+						2:00 PM on Day, Month 14
+			%ul.inline-list
+				%li
+					%small
+						Long title of meeting by this group is long
+				%li
+					%small
+						9 attending
+				%li
+					%small
+						2:00 PM on Day, Month 14
+
+	/ right column with stats
+	.small-4.columns
+		%h6
+			Day Mon 16
+		%h6.subheader
+			2:00 PM
+		%a.button.tiny{:href => "#"}
+			RSVP ->
+		%br
+		%a{:href => "#"}
+			X attending
+		%br
+			%a{:href => "#"}
+				Y comments
+		%small
+			Suggested donation: $99.00 per person

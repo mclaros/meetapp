@@ -16,6 +16,8 @@ Meetapp::Application.routes.draw do
     get "root/index", to: "mockups#root_index"
     get "user/show", to: "mockups#user_show"
     get "group/show", to: "mockups#group_show"
+    get "group/meeting", to: "mockups#group_meeting"
+    get "meeting/show", to: "mockups#meeting_show"
   end
 
   root to: "users#index"

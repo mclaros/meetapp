@@ -57,6 +57,10 @@ class User < ActiveRecord::Base
   	self.save!
   end
 
+  def first_name
+    full_name.split(' ').first
+  end
+
   private
   def ensure_session_token
   	self.session_token ||= self.class.generate_session_token

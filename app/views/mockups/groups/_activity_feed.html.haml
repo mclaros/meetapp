@@ -6,7 +6,7 @@
 	.small-8.columns
 		%small= "NEW #{event.upcase}"
 		%p
-			%a{:href => "#{user_url(user)}"}
+			%a{:href => user_url(user)}
 				= "#{user.full_name}"
 			- if (event == "RSVP") || (event == "comment")
 				= "#{event + 'ed'} on "

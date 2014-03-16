@@ -8,10 +8,14 @@ class MockupsController < ApplicationController
 	end
 
 	def meeting_show
-
+		render '/mockups/meetings/show'
 	end
 
 	def group_show
-		render "/mockups/groups/show"
+		render '/mockups/groups/show'
+	end
+
+	def group_meeting
+		render '/mockups/groups/group_meeting'
 	end
 end
