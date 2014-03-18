@@ -1,21 +1,4 @@
-%h1 Create new group
-
-%form{ :action => groups_url, :method => "POST" }
-	%input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}
-	
-	%label
-		Name of group (2 - 50 characters)
-		%input{:type => "text", :name => "group[name]", :value => (@group.nil? ? "" : @group.name)}
-	
-	%br
-	%br
-
-	%label
-		Description (Max. 500 characters)
-		%textarea{:name => "group[description]"}
-			= @group.nil? ? "" : @group.description
-
-	%br
-	%br
-
-	%input{:type => "submit", :value => "Create Group"}
+.row
+	.small-12.medium-6.column
+		%h1 Create new group
+		= render '/mockups/groups/group_form', {:action => groups_url, :group => @group || nil}

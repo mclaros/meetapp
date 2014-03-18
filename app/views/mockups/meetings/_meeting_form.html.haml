@@ -1,0 +1,39 @@
+- put ||= false
+- if meeting.nil?
+	- name = ""
+	- description = ""
+	- start_datetime = ""
+	- end_datetime = ""
+	- location = ""
+	- location_instructions = ""
+	- suggested_donation = ""
+- else
+	- name = meeting.name || ""
+	- description = meeting.description || ""
+	- start_datetime = meeting.start_datetime || ""
+	- end_datetime = meeting.end_datetime || ""
+	- location = meeting.location || ""
+	- location_instructions = meeting.location_instructions || ""
+	- suggested_donation = meeting.suggested_donation || ""
+
+.form{:action => action, :method => "POST", :data => {:abide => true}}
+	%input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}
+
+	- if put
+		%input{:type => "hidden", :name => "_method", :value => "PUT"}
+
+	.row
+		.small-12.column.meeting-name-field
+			%label
+				Meeting name
+				%small Required, maximum 50 characters
+				%input{:type => "text", :name => "meeting[name]", :value => name, :required => true}
+				%small.error Name is required
+
+	.row
+		.small-12.column.meeting-description-field
+			%label
+				Description
+				%small Required, maximum 500 characters
+				%textarea{:name => "meeting[description]", :value => description, :placeholder => "What's this meeting about?", :required => true, :rows => 4}
+				%small.error Description is required

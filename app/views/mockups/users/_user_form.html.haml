@@ -1,5 +1,4 @@
 - put ||= false
-- user ||= nil
 - if user.nil?
 	- username = ""
 	- email = ""
@@ -36,8 +35,8 @@
 					%label
 						Full Name
 						%small Required, maximum 20 characters
-						%input{:type => "text", :name => "user[full_name]", :value => full_name, :placeholder => "Ex. John Doe", :required => true, :pattern => "^[a-zA-Z]+\s?[a-zA-Z]*$"}
-						%small.error Please provide at least first name
+						%input{:type => "text", :name => "user[full_name]", :value => full_name, :placeholder => "Ex. John Doe", :required => true, :pattern => "^[a-zA-Z]+(\s[a-zA-Z]+)*$"}
+						%small.error Invalid name
 
 			.row
 				.small-12.columns.email-field
@@ -47,24 +46,24 @@
 						%input{:type => "email", :name => "user[email]", :value => email, :required => true, :pattern => "email"}
 						%small.error Email is invalid
 
-			%hr
+			- unless put
+				%hr
+				.row
+					.small-12.columns.password-field
+						%label
+							Password
+							%small Required, minimum 6 characters
+							%input{:type => "password", :name => "user[password]", :required => true, :pattern => "password"}
+							%small.error Invalid password
 
-			.row
-				.small-12.columns.password-field
-					%label
-						Password
-						%small Required, minimum 6 characters
-						%input{:type => "password", :name => "user[password]", :required => true, :pattern => "password"}
-						%small.error Invalid password
-
-			.row
-				.small-12.columns.password-confirm-field
-					%label
-						Confirm password
-						%small Required
-						%input{:type => "password", :name => "user[password_confirm]", :required => true, :pattern => "password"}
-						%small.error Please confirm you password
-			%hr
+				.row
+					.small-12.columns.password-confirm-field
+						%label
+							Confirm password
+							%small Required
+							%input{:type => "password", :name => "user[password_confirm]", :required => true, :pattern => "password"}
+							%small.error Please confirm you password
+				%hr
 
 			.row
 				.small-12.columns.location-field
@@ -77,7 +76,7 @@
 					%label
 						Bio
 						%small Maximum 500 characters
-						%textarea{:name => "user[bio]", :placeholder => "Tell us about yourself"}
+						%textarea{:name => "user[bio]", :placeholder => "Tell us about yourself", :rows => 4}
 							= bio
 
 			%input.button{:type => "submit", :value => (put ? "Update" : "Sign Up")}
