@@ -1,0 +1,10 @@
+/ Must supply  mappings => { "tab title 1" => '#content-id-11', ... };
+/  and :active_tab_title = "active tab text"
+/ If alignment is empty, tabs are horizontal
+- vertical ||= false
+- active_tab_title ||= ""
+%dl{:class => (vertical ? "tabs vertical" : "tabs"), :data => {:tab => true}}
+	- mappings.each do |tab_title, content_id|
+		%dd{:class => (tab_title == active_tab_title ? "active" : "")}
+			%a{:href => content_id}
+				= tab_title

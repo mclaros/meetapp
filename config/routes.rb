@@ -17,6 +17,7 @@ Meetapp::Application.routes.draw do
     get "user/show", to: "mockups#user_show"
     get "group/show", to: "mockups#group_show"
     get "group/meeting", to: "mockups#group_meeting"
+    get "group/members", to: "mockups#group_members"
     get "meeting/show", to: "mockups#meeting_show"
   end
 

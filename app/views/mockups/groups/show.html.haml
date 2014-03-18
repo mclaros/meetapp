@@ -13,16 +13,7 @@
 		%div.alert-box.secondary
 			Suggest a new meeting
 
-		%dl.tabs{:data => {:tab => true}}
-			%dd.active
-				%a{:href => "#upcoming-meetings"}
-					Upcoming COUNT
-			%dd
-				%a{:href => "#past-meetings"}
-					Past
-			%dd
-				%a{:href => "#group-calendar"}
-					Calendar
+		= render '/mockups/shared/tabs', {:mappings => {'Upcoming COUNT' => '#upcoming-meetings', 'Past' => '#past-meetings', 'Calendar' => '#group-calendar' }, :active_tab_title => 'Upcoming COUNT'}
 
 		.tabs-content
 			#upcoming-meetings.content.active
