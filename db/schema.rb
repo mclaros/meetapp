@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140318201644) do
+ActiveRecord::Schema.define(:version => 20140318203335) do
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
@@ -58,17 +58,27 @@ ActiveRecord::Schema.define(:version => 20140318201644) do
   add_index "meeting_guests", ["user_id", "meeting_id"], :name => "index_meeting_guests_on_user_id_and_meeting_id", :unique => true
 
   create_table "meetings", :force => true do |t|
-    t.string   "name",         :null => false
-    t.string   "description",  :null => false
-    t.string   "location"
-    t.integer  "organizer_id", :null => false
+    t.string   "name",                                                                             :null => false
+    t.string   "description",                                                                      :null => false
+    t.string   "location",                :limit => 200,                                           :null => false
+    t.integer  "organizer_id",                                                                     :null => false
     t.integer  "group_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                                                                       :null => false
+    t.datetime "updated_at",                                                                       :null => false
+    t.date     "start_date",                                                                       :null => false
+    t.time     "start_time",                                                                       :null => false
+    t.date     "end_date"
+    t.time     "end_time"
+    t.float    "suggested_donation"
+    t.boolean  "is_past",                                :default => false,                        :null => false
+    t.string   "time_zone",                              :default => "Pacific Time (US & Canada)", :null => false
+    t.string   "additional_instructions", :limit => 200
+    t.boolean  "is_private",                             :default => false,                        :null => false
   end
 
   add_index "meetings", ["group_id"], :name => "index_meetings_on_group_id"
   add_index "meetings", ["organizer_id"], :name => "index_meetings_on_organizer_id"
+  add_index "meetings", ["start_date", "start_time"], :name => "index_meetings_on_start_date_and_start_time"
 
   create_table "users", :force => true do |t|
     t.string   "username",        :limit => 15,  :null => false
