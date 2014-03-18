@@ -2,16 +2,20 @@
 - if meeting.nil?
 	- name = ""
 	- description = ""
-	- start_datetime = ""
-	- end_datetime = ""
+	- start_date = ""
+	- start_time = ""
+	- end_date = ""
+	- end_time = ""
 	- location = ""
 	- location_instructions = ""
 	- suggested_donation = ""
 - else
 	- name = meeting.name || ""
 	- description = meeting.description || ""
-	- start_datetime = meeting.start_datetime || ""
-	- end_datetime = meeting.end_datetime || ""
+	- start_date = meeting.start_date || ""
+	- start_time = meeting.start_time || ""
+	- end_date = meeting.end_date || ""
+	- end_time = meeting.end_time || ""
 	- location = meeting.location || ""
 	- location_instructions = meeting.location_instructions || ""
 	- suggested_donation = meeting.suggested_donation || ""
@@ -37,3 +41,17 @@
 				%small Required, maximum 500 characters
 				%textarea{:name => "meeting[description]", :value => description, :placeholder => "What's this meeting about?", :required => true, :rows => 4}
 				%small.error Description is required
+
+	.row
+		.small-6.column.meeting-start-date-field
+			%label
+				Start date
+				%small Required
+				%input#meeting-start-date{:type => "date", :value => start_date, :required => true, :pattern => "date"}
+				%small.error Start date is required
+
+		.small-6.column.meeting-start-time-field
+
+/ move this to js file
+%script
+	$(document).ready(function () {$("#meeting-start-date").val(new Date().toISOString().substring(0,10));});

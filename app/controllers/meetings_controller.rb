@@ -21,10 +21,18 @@ class MeetingsController < ApplicationController
 	end
 
 	def new
-
+		render :new
 	end
 
 	def create
+		@meeting = Meeting.new(params[:meeting])
 
+		if meeting.save
+			flash[:notices] = ["Successfully created new meeting: #{@meeting.name}"]
+			redirect_to meeting_url(@meeting)
+		else
+			flash.now[:notices] = @meeting.errors.full_messages
+			render :new
+		end
 	end
 end
