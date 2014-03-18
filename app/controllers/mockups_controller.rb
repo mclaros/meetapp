@@ -7,6 +7,10 @@ class MockupsController < ApplicationController
 		render '/mockups/users/show'
 	end
 
+	def user_new
+		render '/mockups/users/new'
+	end
+
 	def meeting_show
 		render '/mockups/meetings/show'
 	end

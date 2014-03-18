@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user].except(:username))
 		@user.username = params[:user][:username]
 		if @user.save
+			# check to see if params[:password_confirm] == params[:password]
 			self.current_user = @user
 			redirect_to user_url(@user)
 		else
