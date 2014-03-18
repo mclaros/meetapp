@@ -1,0 +1,55 @@
+.small-8.columns
+	%h1
+		Name of meeting goes here
+		/ meeting.name
+
+	Links to various social networks
+
+	%h5
+		Sunday, March 16, 2014
+		/ meeting.date(:full)
+	%hr
+	%h5
+		Location Name
+		%small
+			1234 Street St.
+			City, State
+	%p 
+		Additional instructions
+		/ meeting.location_instructions
+	%hr
+	%h5
+		Suggested donation: $2.00
+		%small /per person
+		/ meeting.suggested_donation
+	%hr
+	%p
+		Description of meeting goes here
+		/ meeting.description
+	%hr
+
+	%h5
+		- if logged_in?
+			= "Hey #{current_user.first_name}, leave a comment!"
+			%textarea
+		- else
+			%a{:href => new_session_url}
+				Sign in
+			or
+			%a{:href => new_user_url}
+				Sign up
+			to let your voice be heard!
+
+.small-4.columns
+	%h5 Will you attend?
+	%a.button.small{:href => "#"}
+		Yes
+	%a.button.small{:href => "#"}
+		No
+	%hr
+	%h5 N attending
+	List of attendees goes here
+
+	%hr
+	%h5 M not attending
+	Collapsible list of non-attendees

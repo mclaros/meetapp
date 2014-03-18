@@ -1,0 +1,37 @@
+= render '/mockups/groups/group_navbar', :page => :members
+
+.row
+	= render '/mockups/groups/group_quick_stats'
+
+	.small-12.medium-10.columns
+		%h1 Members
+		%hr
+		= render '/mockups/shared/tabs', {:mappings => {'All members COUNT' => '#members-list', 'Group Leaders' => '#leaders-list'}, :active_tab_title => 'All members COUNT'}
+		%br
+		.row
+			.small-5.columns
+				Sort by:
+				%br
+				.button-bar
+					%ul.button-group
+						%li
+							%a.tiny.button.secondary{:href => '#'}
+								Connection to you
+						%li
+							%a.tiny.button.secondary{:href => '#'}
+								Name
+						%li
+							%a.tiny.button.secondary{:href => '#'}
+								Date joined
+
+			.small-7.columns
+				Find member:
+				%br
+				%input{:type => "text"}					
+
+		.tabs-content
+			#members-list.content.active
+				= render '/mockups/shared/members_listing_simple'
+				= render '/mockups/shared/members_listing_simple'
+			#leaders-list.content
+				Group leaders list

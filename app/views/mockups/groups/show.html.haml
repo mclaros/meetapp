@@ -1,0 +1,41 @@
+= render '/mockups/groups/group_navbar', :page => :home
+
+/ This row wraps around all three content columns
+.row
+	= render '/mockups/groups/group_quick_stats'
+
+	/ This is main content column
+	.small-12.medium-7.columns
+		%h2
+			Welcome to the GROUP TITLE group!
+			/group.welcome message
+
+		%div.alert-box.secondary
+			Suggest a new meeting
+
+		= render '/mockups/shared/tabs', {:mappings => {'Upcoming COUNT' => '#upcoming-meetings', 'Past' => '#past-meetings', 'Calendar' => '#group-calendar' }, :active_tab_title => 'Upcoming COUNT'}
+
+		.tabs-content
+			#upcoming-meetings.content.active
+
+				= render '/mockups/groups/meeting_listing_detailed'
+
+			#past-meetings.content
+
+				= render '/mockups/groups/meeting_listing_detailed'
+				= render '/mockups/groups/meeting_listing_detailed'
+				= render '/mockups/groups/meeting_listing_detailed'
+				= render '/mockups/groups/meeting_listing_detailed'
+
+			#group-calendar.content
+
+
+	.medium-3.show-for-medium-up.columns
+		/ Rightmost column is for extra info, like activity feed
+		/ Not shown for small devices
+		%h3 What's new
+		= render '/mockups/groups/activity_feed',
+			{:event => "RSVP",
+			:user => current_user,
+			:target => Group.first,
+			:time_ago => "9 days"}

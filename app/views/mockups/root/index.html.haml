@@ -1,0 +1,58 @@
+.row.panel{:data => {:equalizer => true}}
+	%div{:class => "small-8 columns panel callout", :data => {:equalizer => true}}
+		%h1
+			= "Hello, #{logged_in? ? current_user.username : 'guest'}."
+		%h3
+			There are some meetups available. Here are some stats.
+
+	%div{:class => "small-4 columns", :data => {:equalizer => true}}
+		%ul
+			%li
+				Some stuff here
+			%li
+				Other stuff here
+			%li
+				And so on...
+
+.row
+	.small-10.medium-8.medium-offset-1.columns
+		%form
+			.row.collapse
+				.small-10.columns
+					%input{:type => "text", :placeholder => "Search meetings"}
+				.small-2.columns
+					%a.button.postfix{:href => "#"}
+						Search
+
+	.small-2.columns
+		Events | Groups
+
+.row
+	.small-12.medium-8.columns
+		/ Each of these row panels will be a listing of meetings split by days
+		.row.panel.meeting-listing
+			.small-1.columns
+				Time
+			.small-11.columns
+				%h5
+					Name of host group
+				%h3
+					Name of meeting or Groups
+				%h5
+					Count of Xs attending
+
+	.medium-4.show-for-medium-up.columns
+		This will only show for medium-up screens!
+		.row.listing-options
+			.small-12.columns
+				%a.button.tiny{:href => "#"}
+					Search Option 1
+				%a.button.tiny{:href => "#"}
+					Search Option 2
+				%a.button.tiny{:href => "#"}
+					Search Option 3
+				%a.button.tiny{:href => "#"}
+					Search Option 4
+
+			.small-12.columns
+				Some other thing here, like thumbnails or calendar
