@@ -1,9 +1,13 @@
 class Meeting < ActiveRecord::Base
-  attr_accessible :description, :group_id, :location, :name
+  attr_accessible :name, :description, :location, :start_date,
+  	:start_time, :end_date, :end_time, :time_zone, :suggested_donation,
+  	:is_past, :is_private, :additional_instructions
 
-	validates_presence_of :organizer_id, :name, :description
+	validates_presence_of :organizer_id, :name, :description, :location,
+		:start_date, :start_time, :time_zone
 	validates_length_of :name, :maximum => 50
 	validates_length_of :description, :maximum => 500
+	validates_length_of :location, :additional_instructions, :maximum => 200
 
 	belongs_to :organizer,
 						:class_name => "User",

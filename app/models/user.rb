@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :bio, :email, :full_name, :location, :password
+  attr_accessible :username, :full_name, :bio, :email, :location, :password
   attr_reader :password
 
   validates_presence_of :username, :full_name, :email, :session_token
@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates_length_of :full_name, maximum: 20
   validates_length_of :bio, maximum: 500
   validates_length_of :password, minimum: 6, allow_nil: true
+  validates_length_of :location, maximum: 200
 
   after_initialize :ensure_session_token
 

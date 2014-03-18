@@ -1,8 +1,9 @@
 class Group < ActiveRecord::Base
-  attr_accessible :description, :founder_id, :name
+  attr_accessible :name, :description, :demonym, :tags
 
-  validates_presence_of :name, :description, :founder_id
+  validates_presence_of :name, :description, :founder_id, :demonym
   validates_length_of :name, :within => 2..50
+  validates_length_of :demonym, maximum: 10
   validates_length_of :description, :maximum => 500
 
   belongs_to :founder,
