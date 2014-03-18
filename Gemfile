@@ -15,6 +15,16 @@ group :development do
 	gem 'guard-livereload', require: false
 end
 
+group :development, :test do
+	gem 'rspec-rails'
+	gem 'shoulda-matchers'
+	gem 'factory_girl_rails'
+end
+
+group :test do
+	gem 'faker'
+	gem 'guard-rspec', require: false
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
