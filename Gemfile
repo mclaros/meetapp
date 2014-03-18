@@ -15,6 +15,8 @@ group :development do
 	gem 'guard-livereload', require: false
 end
 
+gem 'faker'
+
 group :development, :test do
 	gem 'rspec-rails'
 	gem 'shoulda-matchers'
@@ -22,7 +24,6 @@ group :development, :test do
 end
 
 group :test do
-	gem 'faker'
 	gem 'guard-rspec', require: false
 end
 
