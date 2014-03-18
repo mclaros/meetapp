@@ -8,7 +8,7 @@
 	- end_time = ""
 	- time_zone = "Pacific Time (US & Canada)"
 	- location = ""
-	- location_instructions = ""
+	- additional_instructions = ""
 	- suggested_donation = ""
 	- is_private = false
 - else
@@ -19,10 +19,10 @@
 	- end_date = meeting.end_date || ""
 	- end_time = meeting.end_time || ""
 	- location = meeting.location || ""
-	- location_instructions = meeting.location_instructions || ""
+	- additional_instructions = meeting.additional_instructions || ""
 	- suggested_donation = meeting.suggested_donation || ""
 
-.form{:action => action, :method => "POST", :data => {:abide => true}}
+%form{:action => action, :method => "POST", :data => {:abide => true}}
 	%input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}
 
 	- if put
@@ -92,5 +92,22 @@
 		.small-4.columns.meeting-privacy-field
 			%label
 				%input#meeting-is-private{:type => "checkbox", :name => "meeting[is_private]", :checked => is_private}
-				%span.has-tip{:title => "Allows only group members or people you invite to view this meeting",:data => {:tooltip => true}}
+				%span.has-tip{:title => "Only allows group members or people you invite to view this meeting",:data => {:tooltip => true}}
 					Make meeting private?
+
+	.row
+		.small-6.columns.meeting-location-field
+			%label
+				Location address
+				%small Required
+			%textarea{:name => "meeting[location]", :placeholder => "Ex. City Hall, San Francisco, CA 94102", :required => true, :rows => 4}
+				= location
+			%small.error Please provide an address
+
+		.small-6.columns.meeting-additional-instructions-field
+			%label
+				Additional instructions
+			%textarea{:name => "meeting[additional_instructions]", :placeholder => "Ex. Enter code '1234' at the door; please bring a laptop with you", :rows => 4}
+				= additional_instructions
+
+	%input.button{:type => "submit", :value => (put ? "Update Meeting" : "Post Meeting")}
