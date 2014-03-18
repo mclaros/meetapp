@@ -14,60 +14,69 @@
 	- bio = user.bio || ""
 	- dob = user.date_of_birth || ""
 
-%form{:action => action, :method => "POST"}
-	%input{:type=> "hidden", :name => "authenticity_token", :value => form_authenticity_token}
-	
-	- if put
-		%input{:type => "hidden", :name => "_method", :value => "PUT"}
-	- else
-		%label
-			Username* (2-15 characters)
-			%br
-			%input{:type => "text", :name => "user[username]", :value => username}
+.row
+	.small-12.column
+		%form{:action => action, :method => "POST", :data => {:abide => true}}
+			%input{:type=> "hidden", :name => "authenticity_token", :value => form_authenticity_token}
+			
+			- if put
+				%input{:type => "hidden", :name => "_method", :value => "PUT"}
+			- else
+				.row
+					.small-12.columns.username-field
+						%label
+							Username
+							%small required, 2-15 characters
+							%input{:type => "text", :name => "user[username]", :value => username, :required => true, :pattern => "alpha_numeric"}
+						%small.error Username required and must alpha-numeric
 
-	%br
+			.row
+				.small-12.columns.full-name-field
+					%label
+						Full Name
+						%small Required, maximum 20 characters
+						%input{:type => "text", :name => "user[full_name]", :value => full_name, :placeholder => "Ex. John Doe", :required => true, :pattern => "^[a-zA-Z]+(\s[a-zA-Z]+)*$"}
+						%small.error Invalid name
 
-	%label
-		Email*
-		%br
-		%input{:type => "email", :name => "user[email]", :value => email}
+			.row
+				.small-12.columns.email-field
+					%label
+						Email
+						%small Required
+						%input{:type => "email", :name => "user[email]", :value => email, :required => true, :pattern => "email"}
+						%small.error Email is invalid
 
-	%br
+			- unless put
+				%hr
+				.row
+					.small-12.columns.password-field
+						%label
+							Password
+							%small Required, minimum 6 characters
+							%input{:type => "password", :name => "user[password]", :required => true, :pattern => "password"}
+							%small.error Invalid password
 
-	%label
-		Password* (minimum 6 characters)
-		%br
-		%input{:type => "password", :name => "user[password]"}
+				.row
+					.small-12.columns.password-confirm-field
+						%label
+							Confirm password
+							%small Required
+							%input{:type => "password", :name => "user[password_confirm]", :required => true, :pattern => "password"}
+							%small.error Please confirm you password
+				%hr
 
-	%br
+			.row
+				.small-12.columns.location-field
+					%label
+						Location
+						%input{:type => "text", :name => "user[location]", :placeholder => "Ex. Los Angeles, CA", :value => location}
 
-	%label
-		Full Name*
-		%br
-		%input{:type => "text", :name => "user[full_name]", :value => full_name}
+			.row
+				.small-12.columns.bio-field
+					%label
+						Bio
+						%small Maximum 500 characters
+						%textarea{:name => "user[bio]", :placeholder => "Tell us about yourself", :rows => 4}
+							= bio
 
-	%br
-
-	%label
-		Location
-		%br
-		%input{:type => "text", :name => "user[location]", :value => location}
-
-	%br
-
-	%label
-		Bio (Max 500 characters)
-		%br
-		%textarea{:name => "user[bio]"}
-			= bio
-
-	%br
-
-	%label
-		Date of Birth
-		%br
-		%input{:type => "date", :name => "user[date_of_birth]", :value => dob}
-
-	%br
-	%br
-	%input{:type => "submit", :value => (put ? "Update" : "Sign Up")}
+			%input.button{:type => "submit", :value => (put ? "Update" : "Sign Up")}

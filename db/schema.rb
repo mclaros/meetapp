@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140225213924) do
+ActiveRecord::Schema.define(:version => 20140318201102) do
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(:version => 20140225213924) do
     t.string   "username",        :limit => 15,  :null => false
     t.string   "full_name",                      :null => false
     t.string   "bio",             :limit => 500
-    t.date     "date_of_birth"
     t.string   "email"
     t.string   "location"
     t.datetime "created_at",                     :null => false
