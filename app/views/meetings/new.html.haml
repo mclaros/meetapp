@@ -1,4 +1,4 @@
 .row
 	.small-12.medium-8.column
 		%h1 Create new meeting
-		= render '/mockups/meetings/meeting_form', {:action => meetings_url, :meeting => @meeting || nil}
+		= render 'meeting_form', {:action => meetings_url, :meeting => @meeting || nil}

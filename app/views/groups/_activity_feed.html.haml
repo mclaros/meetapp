@@ -1,0 +1,21 @@
+/ Must provide the following variables: event, user, target, time_ago
+- if target
+	- target_url = eval(target.class.to_s.downcase + "_url(#{target.id})")
+
+.row
+	.small-8.columns
+		%small= "NEW #{event.upcase}"
+		%p
+			%a{:href => user_url(user)}
+				= "#{user.full_name}"
+			- if (event == "RSVP") || (event == "comment")
+				= "#{event + 'ed'} on "
+				%a{:href => target_url}
+					= target.name
+			- else
+				= "joined"
+			%br 
+			%small= "#{time_ago} ago"
+	.small-4.columns
+		%img.th{:src => "http://i62.tinypic.com/2dtruo6.jpg"}
+	%hr

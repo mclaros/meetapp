@@ -7,4 +7,4 @@
 
 .row
 	.small-12.medium-6.column
-		= render "/mockups/users/user_form", {:action => user_url(@user), :put => true, :user => @user}
+		= render "user_form", {:action => user_url(@user), :put => true, :user => @user}

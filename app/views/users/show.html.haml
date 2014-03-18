@@ -1,29 +1,62 @@
-%h1
-	= @user.username
+.small-9.columns
+	/ This row is for name
+	.row
+		.small-12.column
+			%h1
+				Full Name
+				%small username
 
-- if logged_in? && (@user.id == current_user.id)
-	%a{:href => edit_user_url(@user)}
-		Edit Profile information
+	.row
+		.small-4.columns
+			%img.th{:src => "http://i62.tinypic.com/2dtruo6.jpg"}
 
-%h3
-	Full Name
-= @user.full_name
+		.small-8.columns
+			%h3 Bio
+			%p
+				Biography goes here
+			%h3 Location
+	%hr
+	.row
+		.small-12.columns
+			%h3 Member of N Groups
+			Privacy settings here
+			%br
+			%br
+			%ul.large-block-grid-2
+				%li
+					.row
+						.small-4.column
+							%img.th{:src => "http://i48.tinypic.com/2e0kzky.jpg"}
+						.small-8.column
+							Title of group goes here
+				%li
+					.row
+						.small-4.column
+							%img.th{:src => "http://i48.tinypic.com/2e0kzky.jpg"}
+						.small-8.column
+							Title of group goes here
+				%li
+					.row
+						.small-4.column
+							%img.th{:src => "http://i48.tinypic.com/2e0kzky.jpg"}
+						.small-8.column
+							Title of group goes here
+				%li
+					.row
+						.small-4.column
+							%img.th{:src => "http://i48.tinypic.com/2e0kzky.jpg"}
+						.small-8.column
+							Title of group goes here
 
-%h3
-	Location
-= @user.location || "NOT GIVEN"
 
-%h3
-	Email
-= @user.email
-
-%h3
-	Bio
-= @user.bio || "NOT GIVEN"
-
-%h3
-	Date of Birth
-= @user.date_of_birth || "NOT GIVEN"
+.small-3.columns
+	%br
+	.row
+		.small-12.column.panel
+			%h3 Statistics
+	.row
+		.small-12.column.panel
+			%h3 Listing of other things
 
 
 %h2= "Comments by #{@user.username}"

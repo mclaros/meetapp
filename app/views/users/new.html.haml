@@ -1,4 +1,4 @@
 .row
 	.small-12.medium-6.column
 		%h1 New User
-		= render "/mockups/users/user_form", {:action => users_url, :user => @user || nil}
+		= render "user_form", {:action => users_url, :user => @user || nil}

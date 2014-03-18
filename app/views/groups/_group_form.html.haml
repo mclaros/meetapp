@@ -1,0 +1,48 @@
+- put ||= false
+- if group.nil?
+	- name = ""
+	- description = ""
+	- tags = ""
+- else
+	- name = group.name || ""
+	- description = group.description || ""
+	/ note that demonym will be ensured via GroupsController
+	- demonym = group.demonym
+	- tags = group.tags || ""
+
+%form{:action => action, :method => "POST", :data => {:abide => true}}
+	%input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}
+
+	- if put
+		%input{:type => "hidden", :name => "_method", :value => "PUT"}
+
+	.row
+		.small-12.columns.group-name-field
+			%label
+				Group name
+				%small 2 - 50 characters
+				%input{:type => "text", :name => "group[name]", :value => name, :required => true}
+				%small.error Name is required
+			
+	.row
+		.small-12.columns.group-description-field
+			%label
+				Decription
+				%small Required, maximum 500 characters
+				%textarea{:name => "group[description]", :placeholder => "About this group", :required => true, :value => description, :rows => 4}
+				%small.error Description is required
+
+	.row
+		.small-6.columns.group-demonym-field
+			%label
+				Demonym
+				%small How this group's members are listed
+				%input{:type => "text", :name => "group[demonym]", :placeholder => "Member", :value => demonym}
+
+		.small-6.columns.group-tags-field
+			%label
+				Tags
+				%small What this group is about, separated by commas
+				%input{:type => "text", :name => "group[tags]", :placeholder => "Ex. travel,music,computer science", :value => tags}
+
+	%input.button{:type => "submit", :value => (put ? "Update Group" : "Create Group")}
