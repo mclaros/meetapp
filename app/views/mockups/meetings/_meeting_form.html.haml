@@ -6,9 +6,11 @@
 	- start_time = ""
 	- end_date = ""
 	- end_time = ""
+	- time_zone = "Pacific Time (US & Canada)"
 	- location = ""
 	- location_instructions = ""
 	- suggested_donation = ""
+	- is_private = false
 - else
 	- name = meeting.name || ""
 	- description = meeting.description || ""
@@ -43,15 +45,52 @@
 				%small.error Description is required
 
 	.row
-		.small-6.column.meeting-start-date-field
+		.small-6.columns
+			Start
+		.small-6.columns
+			End
+		.small-4.columns.meeting-start-date-field
 			%label
-				Start date
+				Date
 				%small Required
-				%input#meeting-start-date{:type => "date", :value => start_date, :required => true, :pattern => "date"}
+				%input.date-input#meeting-start-date{:type => "date", :name => "meeting[start_date]", :value => start_date, :required => true, :pattern => "date"}
 				%small.error Start date is required
 
-		.small-6.column.meeting-start-time-field
+		.small-2.columns.meeting-start-time-field
+			%label
+				Time
+				%small Required
+				%input.time-input#meeting-start-time{:type => "time", :name => "meeting[start_time]", :value => start_time, :required => true, :pattern => "^[0-2][0-9]:[0-5][0-9]$" }
+				%small.error Start time is required
 
-/ move this to js file
-%script
-	$(document).ready(function () {$("#meeting-start-date").val(new Date().toISOString().substring(0,10));});
+		.small-4.columns.meeting-end-date-field
+			%label
+				Date
+				%input.date-input#meeting-end-date{:type => "date", :name => "meeting[end_date]", :value => start_date, :pattern => "date"}
+
+		.small-2.columns.meeting-end-time-field
+			%label
+				Time
+				%input.time-input#meeting-end-time{:type => "time", :name => "meeting[end_time]", :value => end_time, :pattern => "^[0-2][0-9]:[0-5][0-9]$" }
+
+
+	.row
+		.small-5.columns.meeting-time-zone-field
+			%label
+				Time Zone
+				%small Required
+				= time_zone_select("meeting", "time_zone", ActiveSupport::TimeZone.us_zones, {:default => time_zone, :required => true})
+				%small.error Time Zone is required
+
+		.small-3.columns.meeting-suggested-donation-field
+			%label
+				%span.has-tip{:title => "in dollars per person", :data => {:tooltip => true}}
+					Suggested donation
+				%input{:type => "number", :name => "meeting[suggested_donation]", :value => suggested_donation, :pattern => "number", :placeholder => 0}
+				%small.error Invalid amount
+
+		.small-4.columns.meeting-privacy-field
+			%label
+				%input#meeting-is-private{:type => "checkbox", :name => "meeting[is_private]", :checked => is_private}
+				%span.has-tip{:title => "Allows only group members or people you invite to view this meeting",:data => {:tooltip => true}}
+					Make meeting private?
