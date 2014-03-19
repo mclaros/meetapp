@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140318203335) do
+ActiveRecord::Schema.define(:version => 20140319042959) do
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(:version => 20140318203335) do
   add_index "comments", ["commentable_type", "commentable_id"], :name => "index_comments_on_commentable_type_and_commentable_id"
 
   create_table "group_memberships", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "group_id",   :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "user_id",                     :null => false
+    t.integer  "group_id",                    :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.string   "join_comment", :limit => 200
   end
 
   add_index "group_memberships", ["user_id", "group_id"], :name => "index_group_memberships_on_user_id_and_group_id", :unique => true

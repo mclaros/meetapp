@@ -7,7 +7,7 @@ FactoryGirl.define do
   	description { Faker::Lorem.paragraph }
   	location do
   		Faker::Company.name + 
-	  		", " + Faker::Address.street_address + " " + 
+	  		", " + Faker::Address.street_address + ", " + 
 	  		Faker::Address.secondary_address + ", " +
 	  		Faker::Address.city + ", " + Faker::Address.state_abbr
   	end

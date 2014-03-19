@@ -27,12 +27,21 @@ class Meeting < ActiveRecord::Base
 	end
 
 	def self.hosted_by(group_id)
-		self.where(:group_id => group_id)
+		self.where(:group_ird => group_id)
 	end
 
 	private
 
 	def check_if_past
-		
+		unless self.is_past
+			#only compares dates, not times within a date
+			current_date = Time.now.strftime("%F").to_time
+			starting_date = self.start_date.strftime("%F").to_time
+
+			if starting_date < current_date
+				self.is_past = true
+			end
+		end
 	end
+
 end
