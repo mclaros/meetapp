@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :group do
   	name {Faker::Commerce.department}
   	description {Faker::Lorem.paragraph}
-  	founder_id 1
+  	founder_id { User.pluck(:id).sample }
   end
 end

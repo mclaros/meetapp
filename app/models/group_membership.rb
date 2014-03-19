@@ -1,5 +1,5 @@
 class GroupMembership < ActiveRecord::Base
-  attr_accessible :group_id, :user_id, :join_comment
+  attr_accessible :join_comment
   validates_presence_of :group_id, :user_id
   validates_length_of :join_comment, :maximum => 200
 

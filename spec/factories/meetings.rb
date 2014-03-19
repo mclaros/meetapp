@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :meeting do
-  	organizer_id 1
+  	organizer_id { User.pluck(:id).sample }
   	name { Faker::Company.catch_phrase }
   	description { Faker::Lorem.paragraph }
   	location do
