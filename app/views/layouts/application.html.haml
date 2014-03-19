@@ -51,6 +51,7 @@
 
 		- unless flash[:notices].nil?
 			.row
+				%br
 				.small-12.medium-8.medium-offset-1.alert-box.radius{:data => {alert: true}}
 					- flash[:notices].each do |notice|
 						= notice

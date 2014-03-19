@@ -18,6 +18,8 @@ class GroupsController < ApplicationController
 	def create
 		@group = Group.new(params[:group])
 		@group.founder_id = current_user.id
+		@group.demonym = "Member" if @group.demonym.empty?
+
 		if @group.save
 			flash[:notices] = ["Successfully created group: #{@group.name}"]
 			redirect_to group_url(@group)

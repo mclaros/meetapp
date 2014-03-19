@@ -3,6 +3,8 @@ class Meeting < ActiveRecord::Base
   	:start_time, :end_date, :end_time, :time_zone, :suggested_donation,
   	:is_past, :is_private, :additional_instructions
 
+  after_find :check_if_past
+
 	validates_presence_of :organizer_id, :name, :description, :location,
 		:start_date, :start_time, :time_zone
 	validates_length_of :name, :maximum => 50
@@ -26,5 +28,11 @@ class Meeting < ActiveRecord::Base
 
 	def self.hosted_by(group_id)
 		self.where(:group_id => group_id)
+	end
+
+	private
+
+	def check_if_past
+		
 	end
 end
