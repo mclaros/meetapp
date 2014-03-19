@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140319042959) do
+ActiveRecord::Schema.define(:version => 20140319043422) do
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
@@ -49,11 +49,12 @@ ActiveRecord::Schema.define(:version => 20140319042959) do
   add_index "groups", ["founder_id"], :name => "index_groups_on_founder_id"
 
   create_table "meeting_guests", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "meeting_id", :null => false
-    t.string   "status",     :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "user_id",                     :null => false
+    t.integer  "meeting_id",                  :null => false
+    t.string   "status",                      :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.string   "rsvp_comment", :limit => 200
   end
 
   add_index "meeting_guests", ["user_id", "meeting_id"], :name => "index_meeting_guests_on_user_id_and_meeting_id", :unique => true
