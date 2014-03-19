@@ -5,6 +5,10 @@ A Meetup.com clone. Will emphasize integration with Twitter, Facebook, (maybe G+
 
 Current progress: working out layouts. Check the `foundation` branch.
 
+#Architecture
+
+See [erd]('/erd.pdf') for a visual representation of current models and associations.
+
 ##Mockups
 
 Screenshot of the Group show page mockup

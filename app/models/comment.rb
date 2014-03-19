@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :author_id, :commentable_id, :commentable_type, :content
+  attr_accessible :content
   validates_presence_of :content, :author_id, :commentable_id, :commentable_type
   validates_length_of :content, :maximum => 300
 

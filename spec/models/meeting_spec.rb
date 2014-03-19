@@ -113,3 +113,7 @@ describe "meeting creation" do
 	end
 
 end
+
+describe "check_if_past" do
+
+end
